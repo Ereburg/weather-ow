@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // SELECT ELEMENTS
-  const iconElement = document.querySelector(".weather-icon");
-  const tempElement = document.querySelector(".temperature-value p");
-  const descElement = document.querySelector(".temperature-description p");
-  const locationElement = document.querySelector(".location p");
-  const notificationElement = document.querySelector(".notification");
+  const iconElement = document.querySelector(".weather__icon");
+  const tempElement = document.querySelector(".temperature__value");
+  const descElement = document.querySelector(".temperature__description");
+  const locationElement = document.querySelector(".location__value");
+  const notificationElement = document.querySelector(".application__notification");
 
   // App data
   const weather = {};
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navigator.geolocation.getCurrentPosition(setPosition, showError);
   } else {
     notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+    notificationElement.textContent = "Browser doesn't Support Geolocation";
   }
 
   // SET USER'S POSITION
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
   function showError(error) {
     notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p> ${error.message} </p>`;
+    notificationElement.textContent = `${error.message}`;
   }
 
   // GET WEATHER FROM API PROVIDER
@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DISPLAY WEATHER TO UI
   function displayWeather() {
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-    descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+    iconElement.setAttribute("src", `icons/${weather.iconId}.png`);
+    tempElement.innerHTML = `${weather.temperature.value}°<span class="temperature__scale">C</span>`;
+    descElement.textContent = `${weather.description}`;
+    locationElement.textContent = `${weather.city}, ${weather.country}`;
   }
 
   // C to F conversion
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
       fahrenheit = Math.floor(fahrenheit);
 
-      tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
+      tempElement.innerHTML = `${fahrenheit}°<span class="temperature__scale">F</span>`;
       weather.temperature.unit = "fahrenheit";
     } else {
-      tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+      tempElement.innerHTML = `${weather.temperature.value}°<span class="temperature__scale">C</span>`;
       weather.temperature.unit = "celsius";
     }
   });
