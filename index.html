@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Open Weather</title>
-	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/style.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
 </head>
 
@@ -27,8 +27,8 @@
 					<img class="weather__icon" src="icons/unknown.png" alt="Current weather image">
 				</div>
 				<div class="weather__temperature-container temperature">
-					<p class="temperature__value">
-						- °
+					<p class="temperature__indicator">
+						<span class="temperature__value"> - °</span>
 						<span class="temperature__scale">C</span>
 					</p>
 					<p class="temperature__description"> - </p>
@@ -41,13 +41,13 @@
 			<footer class="application__footer footer">
 				<ul class="footer__list buttons">
 					<li class="buttons__item">
-						<button class="button footer__celsius" type="button">°C </button>
+						<button class="button button--celsius" type="button">°C </button>
 					</li>
 					<li class="buttons__item">
-						<button class="button footer__farenheights" type="button">°F </button>
+						<button class="button button--farenheights" type="button">°F </button>
 					</li>
 					<li class="buttons__item">
-						<button class="button footer__kelvins" type="button">°K </button>
+						<button class="button button--kelvins" type="button">°K </button>
 					</li>
 				</ul>
 			</footer>
