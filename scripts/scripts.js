@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // GET WEATHER FROM API PROVIDER
   function getWeather(latitude, longitude) {
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    let api = `${proxy}http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
 
     fetch(api)
       .then(function (response) {
