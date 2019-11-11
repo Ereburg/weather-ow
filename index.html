@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Open Weather</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<main class="wrapper">
+		<section class="application">
+			<header class="application__header">
+				<h2 class="application__title">Weather App</h2>
+			</header>
+
+			<div class="application__notification"></div>
+
+			<section class="application__body weather">
+				<div class="weather__icon-container">
+					<img class="weather__icon" src="icons/unknown.png" alt="Current weather image">
+				</div>
+				<div class="weather__temperature-container temperature">
+					<p class="temperature__value">
+						- °
+						<span class="temperature__scale">C</span>
+					</p>
+					<p class="temperature__description"> - </p>
+				</div>
+				<div class="weather__location-container location">
+					<p class="location__value"> - </p>
+				</div>
+			</section>
+
+			<footer class="application__footer footer">
+				<!-- <p class="footer__call">Temperature Scale:</p> -->
+				<ul class="footer__list buttons">
+					<li class="buttons__item">
+						<button class="button footer__celsius" type="button">°C </button>
+					</li>
+					<li class="buttons__item">
+						<button class="button footer__farenheights" type="button">°F </button>
+					</li>
+					<li class="buttons__item">
+						<button class="button footer__kelvins" type="button">°K </button>
+					</li>
+				</ul>
+			</footer>
+		</section>
+
+		<!-- <div class="app-title">
+			<p>Weather</p>
+		</div>
+		<div class="notification"> </div>
+		<div class="weather-container">
+			<div class="weather-icon">
+				<img src="icons/unknown.png" alt="">
+			</div>
+			<div class="temperature-value">
+				<p>- °<span>C</span></p>
+			</div>
+			<div class="temperature-description">
+				<p> - </p>
+			</div>
+			<div class="location">
+				<p>-</p>
+			</div>
+		</div> -->
+	</main>
+	<!-- <script src="scripts/scripts.js"></script> -->
+</body>
+
+</html>
