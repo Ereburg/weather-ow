@@ -2,9 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // SELECT ELEMENTS
   const iconElement = document.querySelector(".weather__icon");
   const tempElement = document.querySelector(".temperature__value");
+  const tempScale = document.querySelector('.temperature__scale');
   const descElement = document.querySelector(".temperature__description");
   const locationElement = document.querySelector(".location__value");
   const notificationElement = document.querySelector(".application__notification");
+  
 
   // App data
   const weather = {};
@@ -42,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // GET WEATHER FROM API PROVIDER
   function getWeather(latitude, longitude) {
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    // const proxy = 'https://cors-anywhere.herokuapp.com/';
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
 
     fetch(api)
       .then(function (response) {
@@ -64,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // DISPLAY WEATHER TO UI
   function displayWeather() {
     iconElement.setAttribute("src", `icons/${weather.iconId}.png`);
-    tempElement.innerHTML = `${weather.temperature.value}°<span class="temperature__scale">C</span>`;
+    tempElement.textContent = `${weather.temperature.value}°`;
     descElement.textContent = `${weather.description}`;
     locationElement.textContent = `${weather.city}, ${weather.country}`;
   }
@@ -82,11 +85,60 @@ document.addEventListener('DOMContentLoaded', () => {
       let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
       fahrenheit = Math.floor(fahrenheit);
 
-      tempElement.innerHTML = `${fahrenheit}°<span class="temperature__scale">F</span>`;
+      tempElement.textContent = `${fahrenheit}°`;
+      tempScale.textContent = `F`;
       weather.temperature.unit = "fahrenheit";
+    } else if (weather.temperature.unit != "kelvin") {
+      let kelvins = (weather.temperature.value + KELVIN);
+      kelvins = Math.floor(kelvins);
+
+      tempElement.textContent = `${kelvins}°`;
+      tempScale.textContent = `K`;
+      weather.temperature.unit = "kelvin";
     } else {
-      tempElement.innerHTML = `${weather.temperature.value}°<span class="temperature__scale">C</span>`;
+      tempElement.textContent = `${weather.temperature.value}°`;
+      tempScale.textContent = `C`;
       weather.temperature.unit = "celsius";
+    }
+  });
+
+  const buttonCelsius = document.querySelector('.button--celsius');
+  const buttonCFarenh = document.querySelector('.button--farenheights');
+  const buttonKelvins = document.querySelector('.button--kelvins');
+
+  buttonCelsius.addEventListener('click', () => {
+    if (weather.temperature.value === undefined) return;
+
+    if (weather.temperature.unit != "celsius") {
+      tempElement.textContent = `${weather.temperature.value}°`;
+      tempScale.textContent = `C`;
+      weather.temperature.unit = "celsius";
+    }
+  });
+
+  buttonCFarenh.addEventListener('click', () => {
+    if (weather.temperature.value === undefined) return;
+
+    if (weather.temperature.unit != "fahrenheit") {
+      let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+      fahrenheit = Math.floor(fahrenheit);
+
+      tempElement.textContent = `${fahrenheit}°`;
+      tempScale.textContent = `F`;
+      weather.temperature.unit = "fahrenheit";
+    }
+  });
+
+  buttonKelvins.addEventListener('click', () => {
+    if (weather.temperature.value === undefined) return;
+
+    if (weather.temperature.unit != "kelvin") {
+      let kelvins = (weather.temperature.value + KELVIN);
+      kelvins = Math.floor(kelvins);
+
+      tempElement.textContent = `${kelvins}°`;
+      tempScale.textContent = `K`;
+      weather.temperature.unit = "kelvin";
     }
   });
 });

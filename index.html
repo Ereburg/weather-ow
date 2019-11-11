@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Open Weather</title>
-	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/style.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
 </head>
 
@@ -14,19 +14,19 @@
 
 	<main class="wrapper">
 		<section class="application">
+			<h1 class="hidden">Probably you are watching the code? Well, as you see, it's an weather app.</h1>
 			<header class="application__header">
 				<h2 class="application__title">Weather App</h2>
 			</header>
-
 			<div class="application__notification"></div>
-
 			<section class="application__body weather">
+				<h2 class="hidden">Weather Forecast</h2>
 				<div class="weather__icon-container">
 					<img class="weather__icon" src="icons/unknown.png" alt="Current weather image">
 				</div>
 				<div class="weather__temperature-container temperature">
-					<p class="temperature__value">
-						- °
+					<p class="temperature__indicator">
+						<span class="temperature__value"> - °</span>
 						<span class="temperature__scale">C</span>
 					</p>
 					<p class="temperature__description"> - </p>
@@ -35,23 +35,22 @@
 					<p class="location__value"> - </p>
 				</div>
 			</section>
-
 			<footer class="application__footer footer">
-				<!-- <p class="footer__call">Temperature Scale:</p> -->
 				<ul class="footer__list buttons">
 					<li class="buttons__item">
-						<button class="button footer__celsius" type="button">°C </button>
+						<button class="button button--celsius" type="button">°C </button>
 					</li>
 					<li class="buttons__item">
-						<button class="button footer__farenheights" type="button">°F </button>
+						<button class="button button--farenheights" type="button">°F </button>
 					</li>
 					<li class="buttons__item">
-						<button class="button footer__kelvins" type="button">°K </button>
+						<button class="button button--kelvins" type="button">°K </button>
 					</li>
 				</ul>
 			</footer>
 		</section>
 	</main>
+
 	<script src="scripts/scripts.js"></script>
 </body>
 
